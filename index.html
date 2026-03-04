@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday! 🎉</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Scene 1: Landing Page with Slideshow -->
+    <div id="scene-landing" class="scene active">
+        <div class="slideshow-container">
+            <div class="slide fade-slide">
+                <img src="images/photo1.jpg" alt="Memory 1">
+            </div>
+            <div class="slide fade-slide">
+                <img src="images/photo2.jpg" alt="Memory 2">
+            </div>
+            <div class="slide fade-slide">
+                <img src="images/photo3.jpg" alt="Memory 3">
+            </div>
+        </div>
+        <div class="center-content">
+            <h1 class="main-title">A Special Day</h1>
+            <p class="subtitle">Something wonderful awaits...</p>
+            <button class="btn-enter" onclick="enterSite()">Enter</button>
+        </div>
+    </div>
+
+    <!-- Scene 2: Black Screen with VN-style Text -->
+    <div id="scene-darkness" class="scene">
+        <div class="vn-text-container">
+            <p id="darkness-text" class="vn-text"></p>
+            <button id="lights-btn" class="vn-button hidden" onclick="turnOnLights()">Turn on the lights</button>
+        </div>
+    </div>
+
+    <!-- Scene 3: Pink Background (Lights On) -->
+    <div id="scene-lit" class="scene">
+        <div class="vn-text-container">
+            <p id="music-text" class="vn-text"></p>
+            <button id="music-btn" class="vn-button hidden" onclick="startMusic()">Start the music 🎵</button>
+        </div>
+    </div>
+
+    <!-- Scene 4: Decorated Room -->
+    <div id="scene-decorated" class="scene">
+        <!-- Top decoration border -->
+        <div id="top-decor" class="top-decor hidden">
+            <img src="images/decor1.png" alt="Decoration Border">
+        </div>
+        
+        <!-- Balloons will be added dynamically -->
+        <div id="balloons-container"></div>
+        <div id="banner" class="banner hidden">
+            <img src="images/banner.png" alt="Happy Birthday Banner">
+        </div>
+        
+        <div class="vn-text-container">
+            <p id="decorate-text" class="vn-text"></p>
+            <button id="decorate-btn" class="vn-button hidden" onclick="decorateRoom()">Decorate! 🎈</button>
+        </div>
+        <div class="vn-text-container" style="display: none;" id="message-container">
+            <p class="vn-text"></p>
+            <button id="message-btn" class="vn-button hidden" onclick="showLetter()">Read the message 💌</button>
+        </div>
+    </div>
+
+    <!-- Letter Overlay -->
+    <div id="letter-overlay" class="letter-overlay hidden">
+        <div class="letter">
+            <div class="letter-header">For You 💝</div>
+            <div class="letter-content" id="letter-content"></div>
+            <button class="vn-button" id="close-letter-btn" onclick="closeLetter()">Close</button>
+        </div>
+    </div>
+
+    <!-- Scene 5: Cake Time -->
+    <div id="scene-cake" class="scene">
+        <!-- Top decoration border -->
+        <div id="top-decor-cake" class="top-decor">
+            <img src="images/decor1.png" alt="Decoration Border">
+        </div>
+        
+        <div id="balloons-container-cake"></div>
+        <div id="banner-cake" class="banner">
+            <img src="images/banner.png" alt="Happy Birthday Banner">
+        </div>
+        
+        <div id="cake-container" class="cake-container hidden">
+            <div class="table">
+                <img src="images/table.png" alt="Table">
+                
+                <!-- Table Items -->
+                <div class="table-item whisky-coke hidden" id="whisky-coke">
+                    <img src="images/whisky-coke.png" alt="Whisky and Coke">
+                </div>
+                
+                <div class="table-item hookah hidden" id="hookah">
+                    <img src="images/hookah.png" alt="Hookah">
+                </div>
+                
+                <div class="table-item brownie hidden" id="brownie">
+                    <img src="images/brownie.png" alt="Brownie">
+                </div>
+                
+                <div class="cake hidden" id="cake-item">
+                    <img src="images/cake.png" alt="Birthday Cake">
+                    <div class="candle" id="candle">
+                        <div class="flame" id="flame"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Setup Table Text -->
+        <div class="vn-text-container" id="setup-table-container">
+            <p id="setup-text" class="vn-text"></p>
+            <button id="setup-table-btn" class="vn-button hidden" onclick="setupTable()">Let's go! 🎉</button>
+        </div>
+        
+        <!-- Whisky + Coke Text -->
+        <div class="vn-text-container" style="display: none;" id="whisky-container">
+            <p class="vn-text"></p>
+            <button id="whisky-btn" class="vn-button hidden" onclick="showHookah()">Next 🥃</button>
+        </div>
+        
+        <!-- Hookah Text -->
+        <div class="vn-text-container" style="display: none;" id="hookah-container">
+            <p class="vn-text"></p>
+            <button id="hookah-btn" class="vn-button hidden" onclick="showBrownie()">Next 💨</button>
+        </div>
+        
+        <!-- Brownie Text -->
+        <div class="vn-text-container" style="display: none;" id="brownie-container">
+            <p class="vn-text"></p>
+            <button id="brownie-btn" class="vn-button hidden" onclick="showCake()">Next 🍫</button>
+        </div>
+        
+        <!-- Cake Text -->
+        <div class="vn-text-container" style="display: none;" id="cake-text-container">
+            <p class="vn-text"></p>
+            <button id="cake-btn" class="vn-button hidden" onclick="makeWish()">Let's celebrate! 🎂</button>
+        </div>
+        
+        <!-- Wish Text -->
+        <div class="vn-text-container" style="display: none;" id="wish-container">
+            <p class="vn-text"></p>
+            <button id="wish-btn" class="vn-button hidden" onclick="blowCandle()">Wish done! ✨</button>
+        </div>
+        
+        <!-- Blow Candle Text -->
+        <div class="vn-text-container" style="display: none;" id="blow-container">
+            <p class="vn-text"></p>
+            <button id="blow-btn" class="vn-button hidden" onclick="blowCandleAction()">Blow the candle 🌬️</button>
+        </div>
+        
+        <!-- Cut Cake Text -->
+        <div class="vn-text-container" style="display: none;" id="cut-container">
+            <p class="vn-text"></p>
+            <button id="cut-cake-btn" class="vn-button hidden" onclick="cutCake()">Cut the cake! 🔪</button>
+        </div>
+    </div>
+
+    <!-- Scene 6: Final Celebration -->
+    <div id="scene-final" class="scene">
+        <div class="confetti-container" id="confetti-container"></div>
+        <div class="final-message">
+            <h1 class="celebration-title">🎊 Happy Birthday! 🎊</h1>
+            <p class="celebration-text" id="final-text"></p>
+            <div class="hearts-container" id="hearts-container"></div>
+        </div>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="bg-music" loop preload="auto">
+        <source src="audio/birthday-music.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
