@@ -357,17 +357,34 @@ Have the most amazing birthday! 🎊`;
 }
 
 // Typing effect
+// Typing effect with skip on click
 function typeText(elementId, text, callback, speed = 50) {
     const element = document.getElementById(elementId);
     element.textContent = '';
     let index = 0;
+    let interval;
+    let completed = false;
     
-    const interval = setInterval(() => {
+    const skipTyping = () => {
+        if (!completed) {
+            clearInterval(interval);
+            element.textContent = text;
+            completed = true;
+            element.removeEventListener('click', skipTyping);
+            if (callback) callback();
+        }
+    };
+    
+    element.addEventListener('click', skipTyping);
+    
+    interval = setInterval(() => {
         if (index < text.length) {
             element.textContent += text[index];
             index++;
         } else {
             clearInterval(interval);
+            completed = true;
+            element.removeEventListener('click', skipTyping);
             if (callback) callback();
         }
     }, speed);
@@ -377,13 +394,29 @@ function typeText(elementId, text, callback, speed = 50) {
 function typeText2(element, text, callback, speed = 50) {
     element.textContent = '';
     let index = 0;
+    let interval;
+    let completed = false;
     
-    const interval = setInterval(() => {
+    const skipTyping = () => {
+        if (!completed) {
+            clearInterval(interval);
+            element.textContent = text;
+            completed = true;
+            element.removeEventListener('click', skipTyping);
+            if (callback) callback();
+        }
+    };
+    
+    element.addEventListener('click', skipTyping);
+    
+    interval = setInterval(() => {
         if (index < text.length) {
             element.textContent += text[index];
             index++;
         } else {
             clearInterval(interval);
+            completed = true;
+            element.removeEventListener('click', skipTyping);
             if (callback) callback();
         }
     }, speed);
@@ -446,3 +479,25 @@ function createHearts() {
         }, 6000);
     }, 500);
 }
+
+// Music Control
+const musicControl = document.getElementById('music-control');
+const musicIcon = document.getElementById('music-icon');
+let isMuted = false;
+
+musicControl.addEventListener('click', () => {
+    isMuted = !isMuted;
+    
+    if (isMuted) {
+        music.muted = true;
+        musicIcon.classList.remove('bi-volume-up-fill');
+        musicIcon.classList.add('bi-volume-mute-fill');
+        musicControl.classList.add('muted');
+    } else {
+        music.muted = false;
+        musicIcon.classList.remove('bi-volume-mute-fill');
+        musicIcon.classList.add('bi-volume-up-fill');
+        musicControl.classList.remove('muted');
+    }
+});
+

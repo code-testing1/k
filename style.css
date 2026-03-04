@@ -32,6 +32,39 @@ body {
     display: none !important;
 }
 
+/* Music Control Button */
+.music-control {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.music-control:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.music-control.muted {
+    background: rgba(255, 100, 100, 0.3);
+    border-color: rgba(255, 100, 100, 0.5);
+}
+
 /* Scene 1: Landing Page */
 #scene-landing {
     background: #000;
@@ -347,7 +380,7 @@ body {
 
 .cake-container {
     position: absolute;
-    bottom: 110px;
+    bottom: 180px;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
@@ -359,8 +392,8 @@ body {
     animation: cakeAppear 1.5s ease;
 }
 
-.table img {
-    width: 480px;
+.table > img {
+    width: 600px;
     height: auto;
     filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
 }
@@ -368,13 +401,13 @@ body {
 .cake {
     position: absolute;
     bottom: 62%;
-    left: 50%;
+    left: 43%;
     transform: translateX(-50%);
     z-index: 2;
 }
 
 .cake img {
-    width: 110px;
+    width: 140px;
     height: auto;
     filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4));
 }
@@ -484,7 +517,7 @@ body {
 .whisky-coke {
     bottom: 50%;
     left: 8%;
-    width: 90px;
+    width: 110px;
 }
 
 .whisky-coke img {
@@ -497,7 +530,7 @@ body {
 .hookah {
     bottom: 48%;
     right: 8%;
-    width: 75px;
+    width: 90px;
 }
 
 .hookah img {
@@ -510,7 +543,7 @@ body {
 .brownie {
     bottom: 58%;
     left: 30%;
-    width: 65px;
+    width: 75px;
 }
 
 .brownie img {
@@ -626,7 +659,7 @@ body {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media only screen and (max-width: 768px) {
     .main-title {
         font-size: 2.5em;
     }
@@ -663,15 +696,20 @@ body {
     }
 
     .cake-container {
-        bottom: 120px;
+        bottom: 110px;
     }
 
-    .table img {
-        width: 340px;
+    .table > img {
+        width: 470px !important;
     }
 
     .cake img {
-        width: 85px;
+        width: 125px !important;
+    }
+
+    /* Adjust positions to match scaled table */
+    .cake {
+        bottom: 69% !important;
     }
 
     .candle {
@@ -692,21 +730,21 @@ body {
 
     /* Table items responsive */
     .whisky-coke {
-        width: 65px;
-        left: 6%;
-        bottom: 48%;
+        width: 96px !important;
+        left: 6% !important;
+        bottom: 68% !important;
     }
 
     .hookah {
-        width: 55px;
-        right: 6%;
-        bottom: 46%;
+        width: 116px !important;
+        right: 5% !important;
+        bottom: 68% !important;
     }
 
     .brownie {
-        width: 50px;
-        left: 28%;
-        bottom: 55%;
+        width: 98px !important;
+        left: 57% !important;
+        bottom: 62% !important;
     }
 
     .celebration-title {
@@ -715,5 +753,14 @@ body {
 
     .celebration-text {
         font-size: 1.3em;
+    }
+
+    /* Music control mobile */
+    .music-control {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+        bottom: 15px;
+        left: 15px;
     }
 }
