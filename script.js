@@ -102,11 +102,26 @@ function decorateRoom() {
         const banner = document.getElementById('banner');
         banner.classList.remove('hidden');
         banner.classList.add('show');
+        
+        // Show GIF balloons - both sets
+        const balloonLeft = document.getElementById('balloon-left');
+        const balloonRight = document.getElementById('balloon-right');
+        const balloonLeft2 = document.getElementById('balloon-left-2');
+        const balloonRight2 = document.getElementById('balloon-right-2');
+        
+        balloonLeft.classList.remove('hidden');
+        balloonLeft.classList.add('show');
+        balloonRight.classList.remove('hidden');
+        balloonRight.classList.add('show');
+        balloonLeft2.classList.remove('hidden');
+        balloonLeft2.classList.add('show');
+        balloonRight2.classList.remove('hidden');
+        balloonRight2.classList.add('show');
     }, 1000);
     
-    // Step 3: Create balloons after 2 seconds
+    // Step 3: Create CSS balloons in middle area after 2 seconds
     setTimeout(() => {
-        createBalloons('balloons-container', 8);
+        createBalloons('balloons-container', 4);
     }, 2000);
     
     // Step 4: Show message container after all decorations
@@ -121,7 +136,7 @@ function decorateRoom() {
     }, 3000);
 }
 
-// Create balloons
+// Create balloons (middle area only)
 function createBalloons(containerId, count) {
     const container = document.getElementById(containerId);
     const colors = ['#ff6b9d', '#c44569', '#f8b500', '#54a0ff', '#00d2d3', '#9b59b6', '#ff6348'];
@@ -133,24 +148,13 @@ function createBalloons(containerId, count) {
         balloon.style.background = colors[Math.floor(Math.random() * colors.length)];
         
         if (isMobile) {
-            // For mobile: keep balloons within visible range (10-85%)
-            balloon.style.left = (10 + Math.random() * 75) + '%';
-            // Higher vertical position to avoid blocking content
-            balloon.style.top = (10 + Math.random() * 30) + '%';
+            // For mobile: middle area only (30-70%)
+            balloon.style.left = (30 + Math.random() * 40) + '%';
+            balloon.style.top = (15 + Math.random() * 25) + '%';
         } else {
-            // Desktop: better distribution across screen
-            const side = Math.random();
-            if (side < 0.35) {
-                // Left side
-                balloon.style.left = Math.random() * 25 + '%';
-            } else if (side < 0.7) {
-                // Right side
-                balloon.style.left = (75 + Math.random() * 25) + '%';
-            } else {
-                // Middle scattered
-                balloon.style.left = (25 + Math.random() * 50) + '%';
-            }
-            balloon.style.top = (15 + Math.random() * 45) + '%';
+            // Desktop: middle area (30-70%)
+            balloon.style.left = (30 + Math.random() * 40) + '%';
+            balloon.style.top = (20 + Math.random() * 40) + '%';
         }
         
         balloon.style.animationDelay = Math.random() * 2 + 's';
@@ -168,13 +172,11 @@ function showLetter() {
 
 Happy Birthday! 🎉
 
-I hope this little surprise brings a smile to your face! You deserve all the happiness in the world today and every day.
+I hope this little surprise brings a smile to your face! You deserve all the happiness in the world.
 
-Thank you for being such an amazing person and an incredible friend. Your kindness, laughter, and presence make everything better.
+Thank you for being such an amazing person and an incredible friend. Your kindness and presence make everything better.
 
-Here's to another year of wonderful memories, adventures, and dreams coming true!
-
-Wishing you the best birthday ever!
+Here's to another year of wonderful memories and dreams coming true!
 
 With love and warm wishes,
 Your Friend 💝`;
@@ -192,9 +194,9 @@ function closeLetter() {
     // Transition to cake scene
     switchScene('decorated', 'cake');
     
-    // Recreate decorations for cake scene
+    // Recreate decorations for cake scene (fewer balloons in middle)
     setTimeout(() => {
-        createBalloons('balloons-container-cake', 8);
+        createBalloons('balloons-container-cake', 4);
         
         // Show top decoration in cake scene
         const topDecorCake = document.getElementById('top-decor-cake');
