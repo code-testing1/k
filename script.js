@@ -98,6 +98,9 @@ function startMusic() {
     // Play random song from playlist
     playRandomSong();
     
+    // Show music control button
+    document.getElementById('music-control').classList.remove('hidden');
+    
     switchScene('lit', 'decorated');
     
     setTimeout(() => {
@@ -120,36 +123,41 @@ function decorateRoom() {
     topDecor.classList.remove('hidden');
     topDecor.classList.add('show');
     
-    // Step 2: Show banner after 1 second
+    // Step 2: Show banner after 0.8 seconds
     setTimeout(() => {
         const banner = document.getElementById('banner');
         banner.classList.remove('hidden');
         banner.classList.add('show');
-    }, 1000);
+    }, 800);
     
-    // Step 3: Show GIF balloons after 2 seconds
+    // Step 3: Show balloons2 GIFs after 1.6 seconds
+    setTimeout(() => {
+        const balloonLeft2 = document.getElementById('balloon-left-2');
+        const balloonRight2 = document.getElementById('balloon-right-2');
+        
+        balloonLeft2.classList.remove('hidden');
+        balloonLeft2.classList.add('show');
+        balloonRight2.classList.remove('hidden');
+        balloonRight2.classList.add('show');
+    }, 1600);
+    
+    // Step 4: Show balloons1 GIFs after 2.4 seconds
     setTimeout(() => {
         const balloonLeft = document.getElementById('balloon-left');
         const balloonRight = document.getElementById('balloon-right');
-        const balloonLeft2 = document.getElementById('balloon-left-2');
-        const balloonRight2 = document.getElementById('balloon-right-2');
         
         balloonLeft.classList.remove('hidden');
         balloonLeft.classList.add('show');
         balloonRight.classList.remove('hidden');
         balloonRight.classList.add('show');
-        balloonLeft2.classList.remove('hidden');
-        balloonLeft2.classList.add('show');
-        balloonRight2.classList.remove('hidden');
-        balloonRight2.classList.add('show');
-    }, 2000);
+    }, 2400);
     
-    // Step 4: Create CSS balloons in middle area after 3 seconds (last decoration)
+    // Step 5: Create CSS balloons floating up from bottom after 3.2 seconds
     setTimeout(() => {
-        createBalloons('balloons-container', 4);
-    }, 3000);
+        createBalloons('balloons-container', 4, true);
+    }, 3200);
     
-    // Step 5: Show message container after all decorations
+    // Step 6: Show message container after all decorations
     setTimeout(() => {
         const messageContainer = document.getElementById('message-container');
         messageContainer.style.display = 'flex';
@@ -158,11 +166,11 @@ function decorateRoom() {
         typeText2(messageText, "Perfect! Looking festive now! 🎉 By the way... there's a special message for you.", () => {
             document.getElementById('message-btn').classList.remove('hidden');
         });
-    }, 4000);
+    }, 5500);
 }
 
 // Create balloons (middle area only)
-function createBalloons(containerId, count) {
+function createBalloons(containerId, count, floatUp = false) {
     const container = document.getElementById(containerId);
     const colors = ['#ff6b9d', '#c44569', '#f8b500', '#54a0ff', '#00d2d3', '#9b59b6', '#ff6348'];
     const isMobile = window.innerWidth <= 768;
@@ -182,7 +190,21 @@ function createBalloons(containerId, count) {
             balloon.style.top = (20 + Math.random() * 40) + '%';
         }
         
-        balloon.style.animationDelay = Math.random() * 2 + 's';
+        if (floatUp) {
+            // Add float-up animation during decoration
+            balloon.classList.add('float-up');
+            balloon.style.animationDelay = (i * 0.3) + 's';
+            
+            // After float-up completes, switch to regular float animation
+            setTimeout(() => {
+                balloon.classList.remove('float-up');
+                balloon.style.animation = 'float 3s ease-in-out infinite';
+                balloon.style.animationDelay = Math.random() * 2 + 's';
+            }, 2000 + (i * 300));
+        } else {
+            balloon.style.animationDelay = Math.random() * 2 + 's';
+        }
+        
         container.appendChild(balloon);
     }
 }
@@ -192,19 +214,21 @@ function showLetter() {
     const overlay = document.getElementById('letter-overlay');
     overlay.classList.remove('hidden');
     
-    // Your birthday message here - customize this!
-    const message = `Dear Friend,
+    
+    const message = `hyy kumkum!!!,
 
 Happy Birthday! 🎉
 
 I hope this little surprise brings a smile to your face! You deserve all the happiness in the world.
 
-Thank you for being such an amazing person and an incredible friend. Your kindness and presence make everything better.
+Never seen anyone chersishing the birthday as much as you do. Your enthusiasm and joy are infectious, and it's always a pleasure to see you light up on your special day.
 
 Here's to another year of wonderful memories and dreams coming true!
 
 With love and warm wishes,
-Your Friend 💝`;
+
+
+Manan`;
     
     typeText('letter-content', message, () => {
         document.getElementById('close-letter-btn').classList.remove('hidden');
@@ -324,7 +348,7 @@ function makeWish() {
     
     setTimeout(() => {
         const wishText = wishContainer.querySelector('.vn-text');
-        typeText2(wishText, "Before we cut the cake, make a wish! (Dont worry, you say it out loud, I dont have your mic access😄)", () => {
+        typeText2(wishText, "But first make a WISH! (worry not, say it out loud, I dont have your mic access)", () => {
             document.getElementById('wish-btn').classList.remove('hidden');
         });
     }, 500);
@@ -366,7 +390,7 @@ function blowCandleAction() {
     if (blowClickCount === 1) {
         // First click - change text
         blowText.textContent = '';
-        typeText2(blowText, "You go to gym, thoda jaan lgakar! 💪 Keep blowing!");
+        typeText2(blowText, "You go to gym, thoda jaan lgaoo! 💪");
     } else if (blowClickCount < requiredBlows) {
         // Continue clicking (2-4 clicks)
         blowText.textContent = `Almost there! ${requiredBlows - blowClickCount} more... 😤`;
@@ -401,8 +425,11 @@ function blowCandleAction() {
 
 // Cut cake - stay on scene with fireworks and flying hearts
 function cutCake() {
-    // Hide cut button
+    // Hide cut button and text
     document.getElementById('cut-cake-btn').classList.add('hidden');
+    const cutContainer = document.getElementById('cut-container');
+    const cutText = cutContainer.querySelector('.vn-text');
+    cutText.textContent = '';
     
     // Start fireworks on cake scene
     const cakeConfettiContainer = document.getElementById('cake-confetti-container');
@@ -411,10 +438,10 @@ function cutCake() {
     // Start flying hearts
     createFlyingHearts();
     
-    // Show Nacho BC button after 3 seconds (no text)
+    // Show Nacho BC button after 5 seconds (no text)
     setTimeout(() => {
         document.getElementById('nacho-btn').classList.remove('hidden');
-    }, 3000);
+    }, 5000);
 }
 
 // Go to final beach scene
@@ -431,6 +458,37 @@ function goToFinal() {
     // Switch to beach scene
     switchScene('cake', 'final');
     
+    // Make each letter dance individually
+    setTimeout(() => {
+        const beachText = document.querySelector('#beach-final-container .vn-text');
+        const text = beachText.innerHTML;
+        
+        // Wrap each character in a span with staggered animation delay
+        let wrappedText = '';
+        let delay = 0;
+        
+        for (let i = 0; i < text.length; i++) {
+            const char = text[i];
+            
+            if (char === '<') {
+                // Handle HTML tags (like <br>)
+                const tagEnd = text.indexOf('>', i);
+                wrappedText += text.substring(i, tagEnd + 1);
+                i = tagEnd;
+                continue;
+            }
+            
+            if (char === ' ') {
+                wrappedText += '<span class="dancing-letter space"></span>';
+            } else if (char !== '\n' && char !== '\r') {
+                wrappedText += `<span class="dancing-letter" style="animation-delay: ${delay * 0.05}s">${char}</span>`;
+                delay++;
+            }
+        }
+        
+        beachText.innerHTML = wrappedText;
+    }, 500);
+    
     // Show home button
     setTimeout(() => {
         document.getElementById('home-button').classList.remove('hidden');
@@ -439,36 +497,8 @@ function goToFinal() {
 
 // Go back to home/start
 function goToHome() {
-    // Hide home button
-    document.getElementById('home-button').classList.add('hidden');
-    
-    // Stop music
-    const music = document.getElementById('bg-music');
-    music.pause();
-    music.currentTime = 0;
-    
-    // Stop any ongoing timers
-    if (window.flyingHeartsInterval) {
-        clearInterval(window.flyingHeartsInterval);
-    }
-    
-    // Clear fireworks and flying hearts
-    const cakeConfettiContainer = document.getElementById('cake-confetti-container');
-    if (cakeConfettiContainer) {
-        cakeConfettiContainer.innerHTML = '';
-    }
-    
-    const flyingHeartsContainer = document.getElementById('flying-hearts-container');
-    if (flyingHeartsContainer) {
-        flyingHeartsContainer.innerHTML = '';
-    }
-    
-    // Reset to landing scene
-    switchScene('final', 'landing');
-    
-    // Restart slideshow
-    currentSlide = 0;
-    showSlide(currentSlide);
+    // Simply refresh the page to restart everything cleanly
+    location.reload();
 }
 
 // Typing effect
