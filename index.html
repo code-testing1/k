@@ -17,13 +17,16 @@
     <div id="scene-landing" class="scene active">
         <div class="slideshow-container">
             <div class="slide fade-slide">
-                <img src="images/photo1.jpg" alt="Memory 1">
+                <img src="images/img1.jpeg" alt="Memory 1">
             </div>
             <div class="slide fade-slide">
-                <img src="images/photo2.jpg" alt="Memory 2">
+                <img src="images/img2.jpeg" alt="Memory 2">
             </div>
             <div class="slide fade-slide">
-                <img src="images/photo3.jpg" alt="Memory 3">
+                <img src="images/img3.jpeg" alt="Memory 3">
+            </div>
+            <div class="slide fade-slide">
+                <img src="images/img4.jpeg" alt="Memory 4">
             </div>
         </div>
         <div class="center-content">
@@ -98,12 +101,26 @@
     <!-- Scene 5: Cake Time -->
     <div id="scene-cake" class="scene">
         <!-- Top decoration border -->
-        <div id="top-decor-cake" class="top-decor">
+        <div id="top-decor-cake" class="top-decor show">
             <img src="images/decor1.png" alt="Decoration Border">
         </div>
         
+        <!-- Balloon GIF decorations for cake scene -->
+        <div class="balloon-gif balloon-gif-left show">
+            <img src="images/balloons1.gif" alt="Balloons">
+        </div>
+        <div class="balloon-gif balloon-gif-right show">
+            <img src="images/balloons1.gif" alt="Balloons">
+        </div>
+        <div class="balloon-gif balloon-gif-left-2 show">
+            <img src="images/balloons2.gif" alt="Balloons">
+        </div>
+        <div class="balloon-gif balloon-gif-right-2 show">
+            <img src="images/balloons2.gif" alt="Balloons">
+        </div>
+        
         <div id="balloons-container-cake"></div>
-        <div id="banner-cake" class="banner">
+        <div id="banner-cake" class="banner show">
             <img src="images/banner.png" alt="Happy Birthday Banner">
         </div>
         
@@ -179,22 +196,49 @@
         <div class="vn-text-container" style="display: none;" id="cut-container">
             <p class="vn-text"></p>
             <button id="cut-cake-btn" class="vn-button hidden" onclick="cutCake()">Cut the cake! 🔪</button>
+            <button id="nacho-btn" class="vn-button hidden" onclick="goToFinal()">Nacho BC 🕺</button>
         </div>
+        
+        <!-- Confetti and Flying Hearts Container for Cake Scene -->
+        <div class="confetti-container" id="cake-confetti-container"></div>
+        <div class="flying-hearts-container" id="flying-hearts-container"></div>
     </div>
 
-    <!-- Scene 6: Final Celebration -->
-    <div id="scene-final" class="scene">
-        <div class="confetti-container" id="confetti-container"></div>
-        <div class="final-message">
-            <h1 class="celebration-title">🎊 Happy Birthday! 🎊</h1>
-            <p class="celebration-text" id="final-text"></p>
-            <div class="hearts-container" id="hearts-container"></div>
+    <!-- Scene 6: Beach Celebration -->
+    <div id="scene-final" class="scene beach-scene">
+        <!-- Beach Video Background -->
+        <video class="beach-video" autoplay loop muted playsinline>
+            <source src="images/beach.mp4" type="video/mp4">
+        </video>
+        
+        <!-- Overlay for better text visibility -->
+        <div class="video-overlay"></div>
+        
+        <!-- Dancing Characters (Scattered) -->
+        <div class="dancers">
+            <img src="images/dance1.gif" alt="Dancer" class="dancer dancer1">
+            <img src="images/dance2.gif" alt="Dancer" class="dancer dancer2">
+            <img src="images/dance3.gif" alt="Dancer" class="dancer dancer3">
+            <img src="images/dance4.gif" alt="Dancer" class="dancer dancer4">
+            <img src="images/dance5.gif" alt="Dancer" class="dancer dancer5">
+            <img src="images/dance6.gif" alt="Dancer" class="dancer dancer6">
+            <img src="images/dance7.gif" alt="Dancer" class="dancer dancer7">
+        </div>
+        
+        <!-- Beach Text Container (VN Style at Bottom) -->
+        <div class="vn-text-container" id="beach-final-container">
+            <p class="vn-text">Nachenge sare under the moon,<br>Kyunki Devika ka birthday coming soon! 🎉</p>
         </div>
     </div>
+    
+    <!-- Home Button (Global) -->
+    <button class="home-button hidden" id="home-button" onclick="goToHome()" title="Back to Start">
+        <i class="bi bi-house-fill"></i>
+    </button>
 
     <!-- Background Music -->
-    <audio id="bg-music" loop preload="auto">
-        <source src="audio/birthday-music.mp3" type="audio/mpeg">
+    <audio id="bg-music" preload="auto">
+        <source src="" type="audio/mpeg">
     </audio>
 
     <script src="script.js"></script>
