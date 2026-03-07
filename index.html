@@ -6,6 +6,36 @@
     <title>Happy Birthday! 🎉</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Preload critical assets for faster loading -->
+    <!-- Slideshow images (shown first) -->
+    <link rel="preload" href="images/img1.jpeg" as="image">
+    <link rel="preload" href="images/img2.jpeg" as="image">
+    <link rel="preload" href="images/img3.jpeg" as="image">
+    <link rel="preload" href="images/img4.jpeg" as="image">
+    <!-- Decorations -->
+    <link rel="preload" href="images/decor1.png" as="image">
+    <link rel="preload" href="images/banner.png" as="image">
+    <link rel="preload" href="images/balloons1.gif" as="image">
+    <link rel="preload" href="images/balloons2.gif" as="image">
+    <!-- Letter -->
+    <link rel="preload" href="images/letter-paper.png" as="image">
+    <!-- Cake scene -->
+    <link rel="preload" href="images/cake.png" as="image">
+    <link rel="preload" href="images/table.png" as="image">
+    <link rel="preload" href="images/whisky-coke.png" as="image">
+    <link rel="preload" href="images/hookah.png" as="image">
+    <link rel="preload" href="images/brownie.png" as="image">
+    <!-- Beach dancers -->
+    <link rel="preload" href="images/dance1.gif" as="image">
+    <link rel="preload" href="images/dance2.gif" as="image">
+    <link rel="preload" href="images/dance3.gif" as="image">
+    <link rel="preload" href="images/dance4.gif" as="image">
+    <link rel="preload" href="images/dance5.gif" as="image">
+    <link rel="preload" href="images/dance6.gif" as="image">
+    <link rel="preload" href="images/dance7.gif" as="image">
+    <!-- Beach video -->
+    <link rel="preload" href="images/beach.mp4" as="video">
 </head>
 <body>
     <!-- Music Control Button -->
@@ -207,7 +237,7 @@
     <!-- Scene 6: Beach Celebration -->
     <div id="scene-final" class="scene beach-scene">
         <!-- Beach Video Background -->
-        <video class="beach-video" autoplay loop muted playsinline>
+        <video class="beach-video" autoplay loop muted playsinline preload="auto">
             <source src="images/beach.mp4" type="video/mp4">
         </video>
         

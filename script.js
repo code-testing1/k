@@ -273,7 +273,7 @@ function setupTable() {
         whiskyCoke.classList.add('show');
         
         const whiskyText = whiskyContainer.querySelector('.vn-text');
-        typeText2(whiskyText, "Start karte hai daru with coke 🥃", () => {
+        typeText2(whiskyText, "Shuru karte hai daru with coke😅", () => {
             document.getElementById('whisky-btn').classList.remove('hidden');
         });
     }, 1000);
@@ -348,7 +348,7 @@ function makeWish() {
     
     setTimeout(() => {
         const wishText = wishContainer.querySelector('.vn-text');
-        typeText2(wishText, "But first make a WISH! (worry not, say it out loud, I dont have your mic access)", () => {
+        typeText2(wishText, "But first make a WISH! (Dont worry, say it out loud, I dont have your mic access)", () => {
             document.getElementById('wish-btn').classList.remove('hidden');
         });
     }, 500);

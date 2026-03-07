@@ -854,6 +854,21 @@ body {
 }
 
 /* Diwali-style Fireworks */
+.confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 3;
+    overflow: hidden;
+    /* Hardware acceleration for better mobile performance */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
 .firework {
     position: absolute;
     width: 8px;
@@ -867,22 +882,22 @@ body {
     height: 6px;
     border-radius: 50%;
     box-shadow: 0 0 20px currentColor, 0 0 35px currentColor, 0 0 50px currentColor;
+    /* Hardware acceleration */
+    will-change: transform, opacity;
+    backface-visibility: hidden;
 }
 
 @keyframes explode {
     0% {
         transform: translate(0, 0) scale(1);
         opacity: 1;
-        filter: brightness(1.5);
     }
     50% {
         opacity: 1;
-        filter: brightness(1.2);
     }
     100% {
         transform: translate(var(--tx), var(--ty)) scale(0.3);
         opacity: 0;
-        filter: brightness(0.8);
     }
 }
 
@@ -943,11 +958,19 @@ body {
     height: 100%;
     pointer-events: none;
     z-index: 3;
+    overflow: hidden;
+    /* Hardware acceleration for better mobile performance */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
 }
 
 .flying-heart {
     position: absolute;
     width: 25px;
+    /* Hardware acceleration */
+    will-change: transform, opacity;
+    backface-visibility: hidden;
     height: 25px;
     opacity: 0;
 }
