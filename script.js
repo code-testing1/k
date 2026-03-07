@@ -7,7 +7,9 @@ const playlist = [
     'audio/Aavan Jaavan Song  WAR 2  Hrithik Roshan, Kiara Advani  Pritam, Arijit Singh, Nikhita  Amitabh B - YRF.mp3',
     'audio/birthday-music.mp3',
     'audio/Gallan Goodiyaan Dil Dhadakne Do 128 Kbps.mp3',
+    'audio/Ghungroo Song _ WAR _ Hrithik Roshan, Vaani Kapoor _ Arijit Singh, Shilpa _ Vishal & Shekhar, Kumaar.mp3',
     'audio/Hasan Raheem - Wishes ft Talwiinder  Prod by Umair (Official Lyric Video) - Hasan Raheem.mp3',
+    'audio/Hass Hass (Official Video) Diljit X Sia.mp3',
     'audio/Jogi - thiarajxtt, Bir (Official Audio) - thiarajxtt.mp3',
     'audio/Makhna - Drive  Sushant Singh Rajput, Jacqueline Fernandez  Tanishk Bagchi, Asees Kaur - Zee Music Company.mp3',
     'audio/With You - AP Dhillon (Official Music Video) - APDHILLON.mp3'
